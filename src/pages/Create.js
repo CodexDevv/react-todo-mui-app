@@ -1,5 +1,15 @@
 import { React, useState, useContext, useRef } from "react";
-import { Typography, Button, Container, TextField } from "@mui/material";
+import {
+  Typography,
+  Button,
+  Container,
+  TextField,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  FormLabel,
+  FormControl,
+} from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 export default function Create() {
@@ -8,6 +18,8 @@ export default function Create() {
 
   const [titleError, setTitleError] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
+
+  const [category, setCategory] = useState("todos");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +36,7 @@ export default function Create() {
     }
 
     if (title && details) {
-      console.log(title, details);
+      console.log(title, details, category);
     }
   };
 
@@ -34,7 +46,7 @@ export default function Create() {
         variant="h6"
         color="textSecondary"
         component="h2"
-        gutterBottom="true"
+        gutterBottom
       >
         Create a new Note
       </Typography>
@@ -67,6 +79,32 @@ export default function Create() {
           required
           error={detailsError}
         />
+
+        <FormControl
+          sx={{
+            display: "flex",
+          }}
+        >
+          <FormLabel>Note Category</FormLabel>
+          <RadioGroup
+            sx={{
+              marginBottom: 2,
+            }}
+            value={category}
+            onChange={(e) => {
+              setCategory(e.target.value);
+            }}
+          >
+            <FormControlLabel value="money" control={<Radio />} label="Money" />
+            <FormControlLabel value="todos" control={<Radio />} label="Todos" />
+            <FormControlLabel
+              value="reminders"
+              control={<Radio />}
+              label="Reminders"
+            />
+            <FormControlLabel value="work" control={<Radio />} label="Work" />
+          </RadioGroup>
+        </FormControl>
 
         <Button
           variant="contained"
