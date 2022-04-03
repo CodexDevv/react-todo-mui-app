@@ -1,4 +1,4 @@
-import { React, useState, useContext, useRef } from "react";
+import { React, useState } from "react";
 import {
   Typography,
   Button,
@@ -30,11 +30,11 @@ export default function Create() {
     setTitleError(false);
     setDetailsError(false);
 
-    if (title == "") {
+    if (title === "") {
       setTitleError(true);
     }
 
-    if (details == "") {
+    if (details === "") {
       setDetailsError(true);
     }
 
@@ -48,7 +48,11 @@ export default function Create() {
   };
 
   return (
-    <Container>
+    <Container
+      sx={{
+        marginTop: 10,
+      }}
+    >
       <Typography
         variant="h6"
         color="textSecondary"
