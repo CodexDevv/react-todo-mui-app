@@ -11,8 +11,6 @@ import {
   FormControl,
 } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-
-//cant find this lol
 import { useNavigate } from "react-router-dom";
 
 export default function Create() {
